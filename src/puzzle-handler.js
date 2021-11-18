@@ -47,7 +47,7 @@ export async function doPuzzle(){
 
     // display puzzle in squares
     squares.forEach((square, i) => {
-        square.style.backgroundColor = puzzles[i].colors['background']
+        square.style.backgroundColor = puzzles[i].colors.background
         square.innerHTML =  getPuzzleSvg(puzzles[i])
     })
 
