@@ -1,4 +1,4 @@
-import { $, shuffleArray, delay, playSound } from './helpers.js'
+import { $, shuffleArray, delay, playSound, COLORS } from './helpers.js'
 import { generateRandomPuzzle, generateQuestionAndAnswer } from './puzzle-factory.js'
 import { getPuzzleSvg } from './svg-factory.js'
 
@@ -47,8 +47,8 @@ export async function doPuzzle(){
 
     // display puzzle in squares
     squares.forEach((square, i) => {
-        square.style.backgroundColor = puzzles[i].colors.background
-        square.innerHTML =  getPuzzleSvg(puzzles[i])
+        square.style.backgroundColor = COLORS[puzzles[i].colors.background]
+        square.innerHTML = getPuzzleSvg(puzzles[i])
     })
 
     // generate and display question

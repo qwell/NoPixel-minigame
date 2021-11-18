@@ -1,37 +1,6 @@
-import { randomInt, sample } from './helpers.js'
+import { randomInt, sample, SHAPES, COLORS } from './helpers.js'
 
-import TRANSLATIONS from './language.js'
-
-if (!Object.keys(TRANSLATIONS.LANGUAGES).includes(TRANSLATIONS.SELECTED_LANGUAGE)) {
-    throw new Error("LANGUAGE '" + TRANSLATIONS.SELECTED_LANGUAGE + "' NOT SUPPORTED (" + Object.keys(TRANSLATIONS.LANGUAGES) + ")")
-}
-const LANG = TRANSLATIONS.LANGUAGES[TRANSLATIONS.SELECTED_LANGUAGE]
-
-const SHAPES = ["square", "triangle", "rectangle", "circle"]
 const COLORABLE = ['background', 'colortext', 'shapetext', 'number', 'shape']
-
-const COLOR_CODES = ['black', 'white','#1991F9','#8C0C00','#FFE335','#FF9900','#46A04F','#A43AB5']
-
-const LANG_COLORS = LANG.COLORS.reduce((obj, key, i) => {
-    obj[key] = COLOR_CODES[i];
-    return obj;
-}, {})
-
-console.log(LANG_COLORS, LANG.COLORS);
-
-
-// console.log('colors var', COLORS)
-// COLORS becomes this:
-const COLORS = {
-    'black' : 'black',
-    'white' : 'white',
-    'blue' : '#1991F9',
-    'red' : '#8C0C00',
-    'yellow' : '#FFE335',
-    'orange' : '#FF9900',
-    'green' : '#46A04F',
-    'purple' : '#A43AB5',
-}
 
 // functions that return answers from PuzzleData class
 const QUESTIONS = {
@@ -61,7 +30,7 @@ export function generateRandomPuzzle(){
     const number = randomInt(9) + 1
 
     const texts = {
-        color: sample(Object.keys(LANG_COLORS)),
+        color: sample(Object.keys(COLORS)),
         shape: sample(SHAPES)
     }
 
@@ -81,7 +50,6 @@ export function generateRandomPuzzle(){
 
 
 export function generateQuestionAndAnswer(nums, puzzles){
-
     const positionOne = randomInt(nums.length)
     let tempPosTwo
     do {tempPosTwo = randomInt(nums.length)} while(positionOne == tempPosTwo)
@@ -94,39 +62,8 @@ export function generateQuestionAndAnswer(nums, puzzles){
 
     const andWord = 'AND'
 
-    puzzles = puzzles.map(convertPuzzleDataLang)
-
     const question =  firstQuestion+' ('+nums[positionOne]+') '+andWord+' '+secondQuestion+' ('+nums[positionTwo]+')'
     const answer = QUESTIONS[firstQuestion](puzzles[positionOne]) + ' ' + QUESTIONS[secondQuestion](puzzles[positionTwo])
 
     return [question, answer]
-}
-
-
-// LANGUAGE TRANSLATION FUNCTIONS
-// Should implement a more robust method for all text, but this is a start
-
-// takes in a puzzleData class and converts language of colors
-function convertPuzzleDataLang(puzzle){
-    const result = puzzle
-
-    result.colors.background = convertColor(puzzle.colors.background)
-    result.colors.number = convertColor(puzzle.colors.number)
-    result.colors.shape = convertColor(puzzle.colors.shape)
-    result.colors.colortext = convertColor(puzzle.colors.colortext)
-    result.colors.shapetext = convertShape(puzzle.colors.shapetext)
-    result.text.color = convertColor(puzzle.text.color)
-    result.text.shape = convertShape(puzzle.text.shape)
-
-    return result
-}
-
-function convertColor(originalColor){
-    const englishColors = TRANSLATIONS.LANGUAGES.EN.COLORS
-    const position = englishColors.indexOf(originalColor)
-    return LANG.COLORS[position]
-}
-
-function convertShape(originalShape){
-    return originalShape;
 }
