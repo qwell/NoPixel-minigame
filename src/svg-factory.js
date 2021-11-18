@@ -1,16 +1,27 @@
+import { randomInt } from './helpers.js'
+
 /**
  * Generates a complete svg image from a PuzzleData object
- * 
- * @param {PuzzleData} puzzleData 
+ *
+ * @param {PuzzleData} puzzleData
  */
 export function getPuzzleSvg(puzzleData){
-    
     const textSize = 21
     const textWeigth = 'normal'
 
     const shapeSVG = createShape(puzzleData.shape, puzzleData.colors['shape'])
-    const topText = createText(puzzleData.text[0].toUpperCase(), puzzleData.colors['colortext'], textSize, textWeigth, 31)
-    const bottomText = createText(puzzleData.text[1].toUpperCase(), puzzleData.colors['shapetext'], textSize, textWeigth, 67)
+
+    let topText;
+    let bottomText;
+
+    if (randomInt(2)) {
+        topText = createText(puzzleData.text.color.toUpperCase(), puzzleData.colors['colortext'], textSize, textWeigth, 31)
+        bottomText = createText(puzzleData.text.shape.toUpperCase(), puzzleData.colors['shapetext'], textSize, textWeigth, 67)
+    } else {
+        topText = createText(puzzleData.text.shape.toUpperCase(), puzzleData.colors['shapetext'], textSize, textWeigth, 31)
+        bottomText = createText(puzzleData.text.color.toUpperCase(), puzzleData.colors['colortext'], textSize, textWeigth, 67)
+    }
+
     const numberText = createText(puzzleData.number, puzzleData.colors['number'], 60, 100, 50, 'Arial, Helvetica')
 
     return createSVG([shapeSVG, topText, bottomText, numberText])

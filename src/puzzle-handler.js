@@ -46,7 +46,7 @@ export async function doPuzzle(){
     
 
     // display puzzle in squares
-    squares.forEach((square, i) => square.style.backgroundColor = puzzles[i].colors['background'])
+    squares.forEach((square, i) => square.style.backgroundColor = puzzles[i].colors.background)
     squares.forEach((square, i)  => square.innerHTML =  getPuzzleSvg(puzzles[i]))
 
     // generate and display question
