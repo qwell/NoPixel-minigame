@@ -3,7 +3,7 @@
 // lingua italiana = 'IT'
 // english language = 'EN'
 // svenska språk = 'SE'
-const SELECTED_LANGUAGE = 'SE';
+const SELECTED_LANGUAGE = 'EN';
 
 const LANGUAGES = {
     'EN' : {
