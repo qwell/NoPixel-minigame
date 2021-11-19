@@ -1,7 +1,7 @@
 # NoPixel Bank Hack Minigame
 An attempt to recreate as closely as possible the bank hack minigame on the whitelisted GTA server NoPixel.  
 Feel free to 🌟**star**🌟 the project if you like it.  
-Click the thumbnail bellow to try it out!  
+Click the thumbnail below to try it out!  
 
 
 [![](thumbnail.jpg)](https://jesper-hustad.github.io/NoPixel-minigame/index)
@@ -23,7 +23,7 @@ Tested in Chrome, Safari, and Firefox.
 
 ## FiveM version  
 You can use this on your FiveM server!  
-Check out the README in the fivem-script folder [here](/fivem-script/README.md).
+Check out the README-FiveM [here](/README-FiveM.md).
 
 ## Before creating a PR
 Currently don't want to add many more features, so just creature comforts and cutting down on the code size.
