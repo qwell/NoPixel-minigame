@@ -3,7 +3,8 @@
 import { $, delay, playSound } from './helpers.js'
 import { doPuzzle } from './puzzle-handler.js'
 
-const fivem = false;
+// Check whether we're running inside of FiveM.
+const fivem = (typeof GetGameName === "function" && GetGameName() === "fivem");
 
 // runs on site load and handles entire  flow
 async function start(){
