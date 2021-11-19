@@ -1,0 +1,27 @@
+{
+  "name": "nopixel-minigame",
+  "version": "1.0.0",
+  "description": "An attempt to recreate as closely as possible the bank hack minigame on the whitelisted GTA server NoPixel.   Feel free to 🌟**star**🌟 the project if you like it.   Click the thumbnail bellow to try it out!",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server hacking",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jesper-Hustad/NoPixel-minigame.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Jesper-Hustad/NoPixel-minigame/issues"
+  },
+  "homepage": "https://github.com/Jesper-Hustad/NoPixel-minigame#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0"
+  },
+  "dependencies": {
+    "http-server": "^14.0.0"
+  }
+}
